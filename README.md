@@ -13,33 +13,41 @@ The dataset contains 250,001 rows and 33 columns. Each row represents an event, 
 
 ## Approach
 1. **Data Preprocessing**:
-   - Handled missing values and normalization.
-   - Performed feature selection to enhance model performance.
-   - Applied SMOTE (Synthetic Minority Over-sampling Technique) to address class imbalance.
-   
+   - Handled missing values (e.g., placeholder values like 999) and normalized the features.
+   - Performed feature selection to improve model performance.
+   - Applied SMOTE (Synthetic Minority Over-sampling Technique) to address class imbalance by oversampling the minority class (signal events).
+
 2. **Exploratory Data Analysis (EDA)**:
-   - Analyzed feature distributions to understand their characteristics.
-   - Used correlation matrices to identify relationships between features.
-   
+   - Analyzed feature distributions to understand the data’s spread and identify potential outliers or anomalies.
+   - Used correlation matrices to uncover relationships between key features.
+   - Visualized class imbalances between signal and background events.
+
 3. **Model Building**:
-   - Trained a Random Forest Classifier to distinguish between signal and background events.
-   - The model achieved perfect classification, highlighting its effectiveness in particle physics event classification.
-   
+   - **Logistic Regression**: Trained a Logistic Regression model as a baseline to classify signal vs. background events. Despite good accuracy (98.59%) and ROC AUC (0.937), it slightly underperformed on non-linear interactions in the data.
+   - **Random Forest Classifier**: Developed a more complex Random Forest model that handled non-linearities effectively, achieving perfect classification (100% accuracy).
+
 4. **Model Evaluation**:
-   - Evaluated using metrics like accuracy, precision, recall, and ROC AUC.
-   - Achieved a perfect score across all evaluation metrics.
-   
+   - Evaluated both models using accuracy, precision, recall, F1-Score, and ROC AUC.
+   - **Logistic Regression**: Achieved an accuracy of 98.59% with slight underperformance in recall for background events.
+   - **Random Forest**: Achieved perfect scores across all evaluation metrics, proving its strong capability in particle physics event classification.
+
 5. **Conclusion & Recommendations**:
-   - Identified key features such as `Weight`, `DER_mass_MMC`, and `DER_mass_transverse_met_lep` that play a crucial role in event classification.
-   - Recommended targeted experiments focusing on these influential features for further research.
+   - Both models identified key features like `Weight`, `DER_mass_MMC`, and `DER_mass_transverse_met_lep` as crucial for accurate classification.
+   - Recommended focusing on these influential features in future particle physics experiments to enhance the interpretability and accuracy of models.
+   - Suggested further exploration of non-linear models like Random Forest for real-time classification tasks.
 
 ## Key Insights
-- **Feature Importance**: `Weight`, `DER_mass_MMC`, and `DER_mass_transverse_met_lep` are significant contributors to event classification.
-- **Perfect Classification**: The Random Forest model achieved 100% accuracy, demonstrating its strong capability to classify particle physics events accurately.
+- **Model Comparison**:
+   - **Logistic Regression**: Strong performance (98.59% accuracy, 0.937 ROC AUC), ideal for simpler, linear relationships and interpretability.
+   - **Random Forest**: Achieved perfect classification, proving more suitable for handling complex patterns in particle physics data.
+- **Feature Importance**: Key features such as `Weight`, `DER_mass_MMC`, and `DER_mass_transverse_met_lep` played significant roles in event classification across both models.
 
 ## What's Next?
-- **Real-Time Event Classification**: Applying this model in real-time particle physics experiments.
-- **Further Research**: Exploring advanced feature engineering and other machine learning models to uncover more nuances in the data.
+- **Real-Time Event Classification**: Deploy the Random Forest model in real-time particle physics experiments to promptly classify signal vs. background events.
+- **Further Research**:
+   - Investigate **advanced feature engineering** to uncover hidden patterns in the data.
+   - Experiment with other machine learning models like Gradient Boosting or Neural Networks to potentially improve on the baseline Logistic Regression model.
+   - Continue to explore **Logistic Regression** for scenarios requiring model simplicity and transparency.
 
 ## How to Use
 1. Clone the repository: 
